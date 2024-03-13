@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Animation start iteration and end event</title>
+  </head>
+  <body>
+    <style>
+      #myDiv {
+        width: 100%;
+        height: 100px;
+        background: orange;
+        position: relative;
+        font-size: 18px;
+        padding: 16px;
+      }
+      @keyframes amarmotion {
+        from {
+          top: 0px;
+        }
+        to {
+          top: 200px;
+        }
+      }
+    </style>
+
+    <div id="myDiv" onclick="myFunc()">animation start position</div>
+
+    <script>
+      const div1 = document.getElementById("myDiv");
+
+      function myFunc() {
+        div1.style.animation = "amarmotion 4s 3";
+      }
+
+      div1.addEventListener("animationstart", startFunc);
+      div1.addEventListener("animationiteration", repeatFunc);
+      div1.addEventListener("animationend", endFunc);
+
+      function startFunc() {
+        this.innerHTML = "The animation has started";
+        this.style.backgroundColor = "blue";
+      }
+
+      function repeatFunc() {
+        this.style.backgroundColor = "red";
+        this.innerHTML = "Playing Animation";
+      }
+
+      function endFunc() {
+        this.style.background = "pink";
+        this.innerHTML = "this is end";
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Closures</title>
+</head>
+<body>
+
+    <script>
+        function temporary(){
+             let counter = 0;
+
+             return function(){
+                counter += 1;
+                return counter;
+             }
+        }
+
+        let add = temporary(); 
+
+        console.log(add());
+        console.log(add());
+        console.log(add());
+
+        /*
+
+       উপরে temporary ফাংশনটা  একটি  function কে রিটার্ন করতেছে 
+       যেটা কিনা let add = temporary();  দ্বারা add 
+       
+       ভ্যারিয়েবলের ভেতরে 
+             return function(){
+                counter += 1;
+                return counter;
+             }
+
+             রিসিভ করেছে তাই 
+             যখনই add() কল হবে এটি counter += 1; এই অংশটাকে বাড়াবে
+             আর counter ভ্যারিয়েবল কে যে ফাংশন কল হওয়ার পরেও জাভাস্ক্রিপ্ট মুছে দিচ্ছে না
+             তার কারণ যখন প্রথম যখন let add = temporary(); কল হয়
+             তারপর এটি দেখে যে এটি একটি ফাংশন রিটার্ন করতেছে 
+             যার ভেতরে প্যারেন্ট ফাংশনের ভ্যারিয়েবল আছে তাই ওটা টেম্পরারী করে রাখছে 
+             global variable যেমন পেজ টা ক্লোজ করার আগ পর্যন্ত জীবিত থাকে তেমনি
+              এটিকেও জাবাস্ক্রিপ্ট জীবিত রাখে
+
+              তারমানে ক্লোজার বলতে কী বুঝা গেলো  A closure is a function having access to the parent scope, even after the parent function has closed.
+
+
+        */
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Copy event</title>
+</head>
+<body>
+    <h1>copy event </h1>
+    <input oncopy="myFunc()" type="text" value="you try to copy me">
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunc(){
+
+            document.getElementById("demo").innerHTML = "you copy text!";
+
+        }
+   
+    </script>
+</body>
+</html>

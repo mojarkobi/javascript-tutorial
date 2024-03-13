@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Precedence</title>
+</head>
+<body>
+
+<p>
+JavaScript evaluates expressions from left to right. Different sequences can produce different results:
+<br>
+JavaScript:
+<br>
+let x = 16 + 4 + "Volvo";
+<br>
+<br>
+Result: 20Volvo
+<br>
+<br>
+
+আবার যখন এটা এভাবে লেখা হবে
+<br>
+JavaScript:
+<br>
+let x = "Volvo" + 16 + 4;
+<br>
+Result: Volvo164
+
+<br>
+In the first example, JavaScript treats 16 and 4 as numbers, until it reaches "Volvo".
+<br>
+In the second example, since the first operand is a string, all operands are treated as strings.
+</p>
+</body>
+</html>

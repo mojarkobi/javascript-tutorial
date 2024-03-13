@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mouse wheel event</title>
+</head>
+<body>
+    <h1>mouse wheel event example</h1>
+    <p id="demo">This is dummy text</p>
+    
+
+
+
+
+    <script>
+       // document.getElementById("demo").addEventListener("wheel",()=> console.log(this.innerHTML));  //  এটি কাজ করবেনা কারণ arrow function a this context নেই
+       // মানে নিজস্ব this নেই তাই এটি এরকম করে কাজ করবেনা। এখানে this.innerHTML মানে হলো global this কে বুঝেছে কিন্তু event এর this বুঝায় নি
+       // তাই এটির জন্য নিচের মতো করে কোড টা লিখলে কাজ করবে
+
+       document.getElementById("demo").addEventListener("wheel",(event)=> console.log(event.target.innerHTML));
+
+       // অথবা নিচের মতো করে লেখলেও কাজ করবে
+
+       document.getElementById("demo").addEventListener("wheel",function(event){console.log(event.target.innerHTML)});
+
+
+       document.getElementById("demo").addEventListener("wheel",myfunc);
+
+
+       function myfunc(){
+
+        console.log(this.innerHTML); // এখানে this কাজ করবে কারন এটির জন্য this context আছে
+       }
+
+
+
+    </script>
+</body>
+</html>

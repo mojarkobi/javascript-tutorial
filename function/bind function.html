@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>JavaScript Function bind()</h1>
+
+<p>This example will display a person name after 3 seconds:</p>
+
+<p id="demo"></p>
+
+<script>
+const person = {
+  firstName:"John",
+  lastName: "Doe",
+  display: function() {
+    let x = document.getElementById("demo");
+    x.innerHTML = this.firstName + " " + this.lastName;
+  }
+}
+
+// here i use bind function to solve callback work when timeout function call after 3 second later
+let display = person.display.bind(person);
+setTimeout(display, 3000);
+
+
+/*
+
+উপরের কোডটাতে যদি 
+let display = person.display.call(person);
+অথবা
+let display = person.display.apply(person);
+
+দিতাম এটা সরাসরি কল হয়ে যেতো আর ফাংশনটি
+কাজ করে ফেলতো কিন্তু ৩ সেকেন্ড পরে কল হতোনা
+
+এখানেই মুলত  bind সাথে call ও apply এর পার্থক্য
+*/
+</script>
+
+</body>
+</html>

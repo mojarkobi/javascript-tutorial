@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>onchange event</title>
+</head>
+<body>
+    <h2>Javascript change event</h2>
+    <select onchange="myFunc()" id="select">
+    <option value="Mango">Mango</option>
+    <option value="Guava">Guava</option>
+    <option value="Jackfruit">Jackfruit</option>
+    <option value="Apple">Apple</option>
+    </select>
+
+    <br>
+    <p id="demo"></p>
+
+    <script>
+        function myFunc(){
+            x = document.getElementById("select").value;
+
+            document.getElementById("demo").innerHTML = "You selected "+ x;
+        }
+    </script>
+</body>
+</html>
