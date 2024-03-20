@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+
+    <h1>here the example</h1>
+    <div class="star-rating" data-rating="0">
+      <span class="star" data-value="1">*</span>
+      <span class="star" data-value="2">**</span>
+      <span class="star" data-value="3">***</span>
+      <span class="star" data-value="4">****</span>
+      <span class="star" data-value="5">*****</span>
+    </div>
+    <span id="selected-rating">No rating selected</span>
+
+    <script>
+      const starRating = document.querySelector(".star-rating");
+      const starSpans = starRating.querySelectorAll(".star");
+      const selectedRatingSpan = document.getElementById("selected-rating");
+
+      starSpans.forEach((starSpan) => {
+        starSpan.addEventListener("click", () => {
+          const ratingValue = starSpan.dataset.value;
+          starRating.dataset.rating = ratingValue; // Update data attribute
+          selectedRatingSpan.textContent = `Selected Rating: ${ratingValue}`;
+
+          // Highlight selected stars visually (optional)
+          starSpans.forEach((innerSpan) => {
+            innerSpan.classList.remove("selected");
+            if (innerSpan.dataset.value <= ratingValue) {
+              innerSpan.classList.add("selected");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

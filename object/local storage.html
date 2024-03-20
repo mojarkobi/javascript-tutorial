@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>example with local storage</title>
+</head>
+<body>
+    
+    <input type="text" id="userName" placeholder="write your name here">
+    <br>
+    <div id="result"></div>
+
+    <button type="button" id="ok">Ok</button><br>
+
+    <button type="button" id="delete">Delete</button>
+
+    <script>
+        const inputText = document.getElementById("userName");
+        const result = document.getElementById("result");
+        const okBtn =  document.getElementById("ok");
+        const deleteBtn =  document.getElementById("delete");
+
+        result.innerHTML = localStorage.getItem("Name");
+
+        okBtn.addEventListener("click",function(){
+            localStorage.setItem("Name",inputText.value); // set Name key with value of inputText.value
+
+            result.innerHTML = localStorage.getItem("Name"); 
+        });
+
+        deleteBtn.addEventListener("click",function(){
+            localStorage.removeItem("Name");
+        });
+
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtering with custom attribute</title>
+</head>
+<body>
+    <select id="categoryFilter">
+        <option value="all">All Products</option>
+        <option value="electronics">Electronics</option>
+        <option value="clothing">Clothing</option>
+      </select>
+      
+      <ul class="products">
+        <li data-category="electronics">Laptop</li>
+        <li data-category="clothing">Shirt</li>
+        <li data-category="electronics">Phone</li>
+        <li data-category="clothing">Jeans</li>
+      </ul>
+    
+      <script>
+     const filterSelect = document.getElementById("categoryFilter");
+      const productItems = document.querySelectorAll(".products li");
+      
+      filterSelect.addEventListener("change", () => {
+        const selectedCategory = filterSelect.value;
+      
+        productItems.forEach(item => {
+          const itemCategory = item.dataset.category;
+          item.style.display = selectedCategory === "all" ? "block" : (itemCategory === selectedCategory ? "block" : "none");
+        });
+      });
+    
+    
+      </script>
+</body>
+</html>
+
+ 
+    

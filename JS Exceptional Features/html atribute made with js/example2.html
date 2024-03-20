@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>accordian menu</title>
+  </head>
+  <body>
+    <div id="todo-list">
+      <ul>
+        <li data-id="1">Buy groceries (click to complete)</li>
+        <li data-id="2">Finish report (click to complete)</li>
+      </ul>
+      <button id="clear-completed">Clear Completed</button>
+    </div>
+
+    <script>
+      const todoList = document.getElementById("todo-list");
+      const clearCompletedButton = document.getElementById("clear-completed");
+
+      todoList.addEventListener("todo:completed", (event) => {
+        // Access completed todo item element
+        const completedItem = event.detail.item;
+        completedItem.remove(); // Remove the completed item
+      });
+
+      clearCompletedButton.addEventListener("click", () => {
+        // Dispatch a custom event for each todo item
+        const todoItems = todoList.querySelectorAll("li");
+        todoItems.forEach((item) => {
+          // Simulate "completed" state based on a click class
+          if (item.classList.contains("completed")) {
+            const completedEvent = new CustomEvent("todo:completed", {
+              detail: {
+                item: item, // Pass the completed item element
+              },
+            });
+            todoList.dispatchEvent(completedEvent);
+          }
+        });
+      });
+
+      // Add click event listener to each todo item (for demonstration)
+      todoList.querySelectorAll("li").forEach((item) => {
+        item.addEventListener("click", () => {
+          item.classList.toggle("completed"); // Simulate completion
+        });
+      });
+    </script>
+  </body>
+</html>
